@@ -9,29 +9,52 @@
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f8ff; }
     .page { max-width: 680px; margin: 0 auto; padding: 0 0 3rem; }
 
+    /* HERO con immagine di sfondo */
     .hero {
-      background: linear-gradient(160deg, #b8e4f9 0%, #7ec8e3 40%, #a8d8ea 70%, #d6f0fb 100%);
-      border-radius: 0 0 2rem 2rem;
-      padding: 2.5rem 1.5rem 2rem;
-      text-align: center;
       position: relative;
+      border-radius: 0 0 2rem 2rem;
       overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
-    .hero::before {
-      content: '❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄';
-      position: absolute; top: 8px; left: 0; right: 0;
-      font-size: 14px; color: rgba(255,255,255,0.55); letter-spacing: 8px;
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('/compleanno-margherita/elsa.jpg');
+      background-size: cover;
+      background-position: center top;
+      z-index: 0;
+    }
+    /* Sfumatura in basso per leggibilità testo */
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10, 50, 90, 0.05) 0%,
+        rgba(10, 50, 90, 0.15) 40%,
+        rgba(10, 50, 90, 0.75) 70%,
+        rgba(10, 50, 90, 0.92) 100%
+      );
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem 1.5rem 2rem;
+      text-align: center;
     }
     .hero-tag {
-      display: inline-block; background: rgba(255,255,255,0.45); color: #1a5f7a;
+      display: inline-block; background: rgba(255,255,255,0.2); color: #d6f0fb;
       font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px;
-      margin-bottom: 1rem; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 0.8rem; letter-spacing: 1px; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.3);
     }
-    .hero h1 { font-size: 2.2rem; font-weight: 500; color: #0d3f5a; line-height: 1.2; margin-bottom: 0.4rem; }
-    .hero h1 span { color: #0e6fa0; }
-    .hero-subtitle { font-size: 1rem; color: #1a5f7a; margin-bottom: 1.5rem; }
-    .snowflakes { font-size: 2rem; letter-spacing: 12px; margin-bottom: 0.5rem; }
-    .hero img { width: 100%; border-radius: 1rem; display: block; margin-top: 1rem; }
+    .hero h1 { font-size: 2.2rem; font-weight: 500; color: #ffffff; line-height: 1.2; margin-bottom: 0.4rem; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .hero h1 span { color: #a8e6f8; }
+    .hero-subtitle { font-size: 1rem; color: #d6f0fb; }
 
     .details-card {
       background: #e8f7fd; border: 1px solid #b0dcef; border-radius: 1rem;
@@ -113,11 +136,13 @@
 <div class="page" id="publicPage">
 
   <div class="hero">
-    <div class="hero-tag">❄ sei invitata/o ❄</div>
-    <div class="snowflakes">❄ ✨ ❄</div>
-    <h1>Buon compleanno<br><span>Margherita!</span></h1>
-    <p class="hero-subtitle">Margherita compie <strong>5 anni</strong> 🎂</p>
-    <img src="/compleanno-margherita/elsa.jpg" alt="Frozen - Elsa" />
+    <div class="hero-bg"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-tag">❄ sei invitata/o ❄</div>
+      <h1>Buon compleanno<br><span>Margherita!</span></h1>
+      <p class="hero-subtitle">Margherita compie <strong style="color:#fff;">5 anni</strong> 🎂</p>
+    </div>
   </div>
 
   <div class="details-card">
@@ -244,12 +269,7 @@
     }
 
     const adults = parseInt(document.getElementById('adultsCount').value);
-    const entry = {
-      name,
-      siblings,
-      adults,
-      timestamp: new Date().toLocaleString('it-IT')
-    };
+    const entry = { name, siblings, adults, timestamp: new Date().toLocaleString('it-IT') };
 
     btn.disabled = true;
     btn.textContent = '⏳ Invio in corso...';
