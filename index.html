@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compleanno di Margherita 🎉</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f8ff; }
+    .page { max-width: 680px; margin: 0 auto; padding: 0 0 3rem; }
+
+    .hero {
+      background: linear-gradient(160deg, #b8e4f9 0%, #7ec8e3 40%, #a8d8ea 70%, #d6f0fb 100%);
+      border-radius: 0 0 2rem 2rem;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄ ❄';
+      position: absolute; top: 8px; left: 0; right: 0;
+      font-size: 14px; color: rgba(255,255,255,0.55); letter-spacing: 8px;
+    }
+    .hero-tag {
+      display: inline-block; background: rgba(255,255,255,0.45); color: #1a5f7a;
+      font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px;
+      margin-bottom: 1rem; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .hero h1 { font-size: 2.2rem; font-weight: 500; color: #0d3f5a; line-height: 1.2; margin-bottom: 0.4rem; }
+    .hero h1 span { color: #0e6fa0; }
+    .hero-subtitle { font-size: 1rem; color: #1a5f7a; margin-bottom: 1.5rem; }
+    .snowflakes { font-size: 2rem; letter-spacing: 12px; margin-bottom: 0.5rem; }
+
+    /* ============================================================
+       IMMAGINE INTESTAZIONE
+       Per aggiungere l'immagine di Elsa:
+       1. Metti elsa.jpg nella stessa cartella di questo file HTML
+       2. Rimuovi il blocco hero-img-placeholder qui sotto
+       3. Aggiungi: <img src="elsa.jpg" style="width:100%; border-radius:1rem; display:block;" />
+       ============================================================ */
+<img src="elsa.jpg" style="width:100%; border-radius:1rem;" />
+
+    .details-card {
+      background: #e8f7fd; border: 1px solid #b0dcef; border-radius: 1rem;
+      padding: 1.4rem 1.6rem; margin: 1.5rem 1rem 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .detail-row { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #0d3f5a; }
+    .detail-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .map-link { font-size: 13px; color: #0e6fa0; text-decoration: none; }
+    .map-link:hover { text-decoration: underline; }
+
+    .info-box {
+      background: #fff8e1; border: 1px solid #ffe082; border-radius: 1rem;
+      padding: 1.1rem 1.4rem; margin: 1rem 1rem 0;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .info-box-title { font-size: 13px; font-weight: 500; color: #7a5800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+    .info-item { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: #5a3e00; }
+    .info-item-icon { flex-shrink: 0; font-size: 16px; }
+
+    .form-section { padding: 1.8rem 1rem 0; }
+    .form-section h2 { font-size: 1.15rem; font-weight: 500; color: #0d3f5a; margin-bottom: 1.2rem; text-align: center; }
+    .form-card { background: #f5fbfe; border: 1px solid #b0dcef; border-radius: 1rem; padding: 1.4rem; }
+    label { display: block; font-size: 13px; color: #1a5f7a; font-weight: 500; margin-bottom: 5px; }
+    input, select {
+      width: 100%; padding: 9px 12px; font-size: 15px;
+      border: 1px solid #b0dcef; border-radius: 8px;
+      background: white; color: #0d3f5a; margin-bottom: 14px; outline: none;
+      font-family: inherit;
+    }
+    input:focus, select:focus { border-color: #3aa8d8; box-shadow: 0 0 0 3px rgba(58,168,216,0.15); }
+    .add-btn, .remove-btn {
+      font-size: 13px; padding: 5px 12px; border-radius: 6px;
+      border: 1px solid #b0dcef; background: white; color: #1a5f7a; cursor: pointer; margin-top: 6px;
+      font-family: inherit;
+    }
+    .add-btn:hover { background: #e8f7fd; }
+    .remove-btn { color: #c0392b; border-color: #f5b7b1; margin-left: 6px; }
+    .remove-btn:hover { background: #fef9f9; }
+    .sibling-hint { font-size: 12px; color: #5a9ab5; margin-bottom: 10px; }
+    .submit-btn {
+      width: 100%; padding: 13px;
+      background: linear-gradient(135deg, #0e6fa0, #3aa8d8);
+      color: white; font-size: 16px; font-weight: 500;
+      border: none; border-radius: 10px; cursor: pointer; margin-top: 6px;
+      font-family: inherit;
+    }
+    .submit-btn:hover { opacity: 0.88; }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .success-box { display: none; text-align: center; padding: 2rem 1rem; }
+    .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .success-box h2 { color: #0d3f5a; font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .success-box p { color: #1a5f7a; font-size: 14px; line-height: 1.6; }
+
+    .admin-toggle { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px dashed #b0dcef; }
+    .admin-toggle a { font-size: 12px; color: #8ab8cc; text-decoration: none; cursor: pointer; }
+    .admin-toggle a:hover { color: #1a5f7a; }
+    .admin-login { display: none; padding: 1rem; }
+    .admin-login input { margin-bottom: 10px; }
+    .admin-btn { width: 100%; padding: 10px; background: #0d3f5a; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-family: inherit; }
+    .admin-error { color: #c0392b; font-size: 12px; margin-top: 6px; }
+
+    .admin-panel { display: none; padding: 1.5rem 1rem; max-width: 680px; margin: 0 auto; }
+    .admin-panel h2 { color: #0d3f5a; font-size: 1.1rem; margin-bottom: 0.4rem; font-weight: 500; }
+    .admin-note { font-size: 14px; color: #5a9ab5; margin-bottom: 1.4rem; line-height: 1.5; }
+    .admin-back { font-size: 13px; color: #8ab8cc; cursor: pointer; background: none; border: none; margin-bottom: 1rem; display: block; font-family: inherit; }
+    .admin-back:hover { color: #1a5f7a; }
+    .sheets-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #0d3f5a; color: white; text-decoration: none;
+      padding: 12px 20px; border-radius: 10px; font-size: 15px; font-weight: 500;
+    }
+    .sheets-btn:hover { opacity: 0.88; }
+  </style>
+</head>
+<body>
+
+<div class="page" id="publicPage">
+
+  <div class="hero">
+    <div class="hero-tag">❄ sei invitata/o ❄</div>
+    <div class="snowflakes">❄ ✨ ❄</div>
+    <h1>Buon compleanno<br><span>Margherita!</span></h1>
+    <p class="hero-subtitle">Margherita compie <strong>5 anni</strong> 🎂</p>
+
+    <!-- SOSTITUISCI QUESTO BLOCCO CON <img src="elsa.jpg" ...> -->
+    <div class="hero-img-placeholder">
+      🖼 Inserisci qui l'immagine:<br>sostituisci questo blocco con<br>
+      <code style="font-size:12px; background:rgba(255,255,255,0.5); padding:2px 6px; border-radius:4px;">&lt;img src="elsa.jpg" style="width:100%; border-radius:1rem;" /&gt;</code>
+    </div>
+  </div>
+
+  <div class="details-card">
+    <div class="detail-row">
+      <span class="detail-icon">📅</span>
+      <span><strong>17 maggio 2026</strong> — domenica</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-icon">⏰</span>
+      <span><strong>15:00 – 18:00</strong></span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-icon">📍</span>
+      <span>
+        <strong>Ludoteca Il Passatempo</strong><br>
+        <span style="font-size:14px; color:#1a5f7a;">Via Pisa, 3 — 20093 Cologno Monzese (MI)</span><br>
+        <a class="map-link" href="https://maps.google.com/?q=Via+Pisa+3+Cologno+Monzese+MI" target="_blank">📌 Apri in Google Maps</a>
+      </span>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-box-title">⚠️ Da ricordare</div>
+    <div class="info-item">
+      <span class="info-item-icon">🧦</span>
+      <span>Ricordati i <strong>calzini antiscivolo!</strong></span>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <h2>✉️ Conferma la tua presenza!</h2>
+    <div class="form-card" id="formCard">
+
+      <label for="guestName">Il tuo nome</label>
+      <input type="text" id="guestName" placeholder="Es. Giulia Rossi" />
+
+      <label>Fratelli o sorelle che vengono</label>
+      <p class="sibling-hint">Aggiungi un rigo per ogni fratello/sorella</p>
+      <div id="siblingsList"></div>
+      <button class="add-btn" onclick="addSibling()">+ Aggiungi fratello/sorella</button>
+
+      <div style="height:14px"></div>
+      <label for="adultsCount">Adulti accompagnatori</label>
+      <select id="adultsCount">
+        <option value="0">0 adulti</option>
+        <option value="1" selected>1 adulto</option>
+        <option value="2">2 adulti</option>
+        <option value="3">3 adulti</option>
+        <option value="4">4 adulti</option>
+        <option value="5">5 adulti</option>
+      </select>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitRSVP()">❄ Confermo la mia presenza!</button>
+      <p id="formError" style="color:#c0392b; font-size:12px; margin-top:8px; display:none;"></p>
+    </div>
+
+    <div class="success-box" id="successBox">
+      <div class="success-icon">🎉</div>
+      <h2>Grazie! Non vediamo l'ora di vederti!</h2>
+      <p>La tua risposta è stata registrata.<br>A presto al regno di ghiaccio! ❄✨</p>
+    </div>
+  </div>
+
+  <div class="admin-toggle">
+    <a onclick="toggleAdminLogin()">accesso organizzatore</a>
+  </div>
+
+  <div class="admin-login" id="adminLogin">
+    <div class="form-card">
+      <label>Password organizzatore</label>
+      <input type="password" id="adminPwd" placeholder="Password..." onkeydown="if(event.key==='Enter') checkAdmin()" />
+      <button class="admin-btn" onclick="checkAdmin()">Accedi al pannello</button>
+      <p class="admin-error" id="adminError"></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- PANNELLO ADMIN -->
+<div class="admin-panel" id="adminPanel">
+  <button class="admin-back" onclick="closeAdmin()">← torna alla pagina pubblica</button>
+  <h2>🔒 Pannello organizzatore</h2>
+  <p class="admin-note">Ogni risposta viene salvata in tempo reale nel tuo Google Sheet. Clicca il pulsante qui sotto per vedere tutte le risposte.</p>
+  <a class="sheets-btn" href="https://docs.google.com/spreadsheets/d/1Tm5Zm5eScKvhl1lw5e3Mk0kyiYzwIhbj6L_hy511MUs/edit?hl=it&gid=0#gid=0" target="_blank">
+    📊 Apri Google Sheets
+  </a>
+</div>
+
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMxli2fsc9EYDoEuS5zdY8LR6d6AgP6Ojqvr-daV6_9hEEymj0aac6Cem6OTXRV09A/exec';
+  const ADMIN_PASSWORD = 'comple5marghe';
+
+  function addSibling(name='', age='') {
+    const list = document.getElementById('siblingsList');
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex; align-items:center; gap:8px; margin-bottom:8px;';
+    row.innerHTML = `
+      <input type="text" placeholder="Nome" value="${name}" style="flex:2; margin:0;" />
+      <input type="number" placeholder="Anni" min="0" max="17" value="${age}" style="flex:1; margin:0;" />
+      <button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+    `;
+    list.appendChild(row);
+  }
+
+  async function submitRSVP() {
+    const name = document.getElementById('guestName').value.trim();
+    const errorEl = document.getElementById('formError');
+    const btn = document.getElementById('submitBtn');
+
+    if (!name) {
+      errorEl.textContent = 'Inserisci il tuo nome per continuare.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    const siblingRows = document.getElementById('siblingsList').children;
+    const siblings = [];
+    for (let row of siblingRows) {
+      const inputs = row.querySelectorAll('input');
+      const sName = inputs[0].value.trim();
+      const sAge = inputs[1].value.trim();
+      if (sName) siblings.push({ name: sName, age: sAge || '?' });
+    }
+
+    const adults = parseInt(document.getElementById('adultsCount').value);
+    const entry = {
+      name,
+      siblings,
+      adults,
+      timestamp: new Date().toLocaleString('it-IT')
+    };
+
+    btn.disabled = true;
+    btn.textContent = '⏳ Invio in corso...';
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(entry)
+      });
+    } catch(e) {
+      console.error('Errore invio:', e);
+    }
+
+    document.getElementById('formCard').style.display = 'none';
+    document.getElementById('successBox').style.display = 'block';
+  }
+
+  function toggleAdminLogin() {
+    const el = document.getElementById('adminLogin');
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function checkAdmin() {
+    const pwd = document.getElementById('adminPwd').value;
+    if (pwd === ADMIN_PASSWORD) {
+      document.getElementById('publicPage').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+    } else {
+      document.getElementById('adminError').textContent = 'Password errata.';
+    }
+  }
+
+  function closeAdmin() {
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('publicPage').style.display = 'block';
+    document.getElementById('adminPwd').value = '';
+    document.getElementById('adminLogin').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
