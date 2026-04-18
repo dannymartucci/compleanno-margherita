@@ -31,15 +31,7 @@
     .hero h1 span { color: #0e6fa0; }
     .hero-subtitle { font-size: 1rem; color: #1a5f7a; margin-bottom: 1.5rem; }
     .snowflakes { font-size: 2rem; letter-spacing: 12px; margin-bottom: 0.5rem; }
-
-    /* ============================================================
-       IMMAGINE INTESTAZIONE
-       Per aggiungere l'immagine di Elsa:
-       1. Metti elsa.jpg nella stessa cartella di questo file HTML
-       2. Rimuovi il blocco hero-img-placeholder qui sotto
-       3. Aggiungi: <img src="elsa.jpg" style="width:100%; border-radius:1rem; display:block;" />
-       ============================================================ */
-    <img src="./elsa.jpg" style="width:100%; border-radius:1rem;" />
+    .hero img { width: 100%; border-radius: 1rem; display: block; margin-top: 1rem; }
 
     .details-card {
       background: #e8f7fd; border: 1px solid #b0dcef; border-radius: 1rem;
@@ -125,12 +117,7 @@
     <div class="snowflakes">❄ ✨ ❄</div>
     <h1>Buon compleanno<br><span>Margherita!</span></h1>
     <p class="hero-subtitle">Margherita compie <strong>5 anni</strong> 🎂</p>
-
-    <!-- SOSTITUISCI QUESTO BLOCCO CON <img src="elsa.jpg" ...> -->
-    <div class="hero-img-placeholder">
-      🖼 Inserisci qui l'immagine:<br>sostituisci questo blocco con<br>
-      <code style="font-size:12px; background:rgba(255,255,255,0.5); padding:2px 6px; border-radius:4px;">&lt;img src="elsa.jpg" style="width:100%; border-radius:1rem;" /&gt;</code>
-    </div>
+    <img src="/compleanno-margherita/elsa.jpg" alt="Frozen - Elsa" />
   </div>
 
   <div class="details-card">
@@ -214,7 +201,7 @@
   <button class="admin-back" onclick="closeAdmin()">← torna alla pagina pubblica</button>
   <h2>🔒 Pannello organizzatore</h2>
   <p class="admin-note">Ogni risposta viene salvata in tempo reale nel tuo Google Sheet. Clicca il pulsante qui sotto per vedere tutte le risposte.</p>
-  <a class="sheets-btn" href="https://docs.google.com/spreadsheets/d/1Tm5Zm5eScKvhl1lw5e3Mk0kyiYzwIhbj6L_hy511MUs/edit?hl=it&gid=0#gid=0" target="_blank">
+  <a class="sheets-btn" href="https://docs.google.com/spreadsheets/" target="_blank">
     📊 Apri Google Sheets
   </a>
 </div>
